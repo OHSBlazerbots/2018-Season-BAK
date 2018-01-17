@@ -2,14 +2,14 @@ package org.usfirst.frc.team3807.robot.subsystems;
 
 //import org.usfirst.frc.team3807.robot.commands.DriveWithJoystick;
 
-//import org.usfirst.frc.team3807.robot.controllers.TalonSpeedController;
+import org.usfirst.frc.team3807.robot.controllers.TalonSpeedController;
 
-//import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
-//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -20,9 +20,9 @@ public class Chassis extends Subsystem {
 
 	//Talon variables
 	private SpeedController left, right;
-	//private TalonSRX leftTalon, rightTalon;
+	private TalonSRX leftTalon, rightTalon;
 	
-	//public DifferentialDrive drive;
+	public DifferentialDrive drive;
 	private DigitalInput limitSwitch;
 	
 	private boolean reverse;
