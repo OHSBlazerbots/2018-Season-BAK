@@ -5,6 +5,7 @@ package org.usfirst.frc.team3807.robot.subsystems;
 import org.usfirst.frc.team3807.robot.controllers.TalonSpeedController;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
@@ -18,62 +19,60 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Chassis extends Subsystem {
 
-	//Talon variables
-	private SpeedController left, right;
-	private TalonSRX leftTalon, rightTalon;
+	// Talon variables
 	
+//	private SpeedController left, right;
+//	private TalonSRX leftTalon, rightTalon;
+	
+	WPI_TalonSRX leftMotor;  		/* device IDs here (1 of 2) */
+	WPI_TalonSRX rightMotor;
+
 	public DifferentialDrive drive;
-	private DigitalInput limitSwitch;
-	
-	private boolean reverse;
-	
+
 	public Chassis(int L, int R) {
 		if (L != -1 && R != -1) {
-			
-			//Make an actual object for speed controller
-			//left = new TalonSpeedController(leftTalon);
-			//right = new TalonSpeedController(rightTalon);
-			
-		}
-		//drive = new DifferentialDrive(left, right);
-		//drive.setSafetyEnabled(false);
-		
-		limitSwitch = new DigitalInput(0);
-	}
-	
-	public void drive(double speed, double turn) {
-		//drive.arcadeDrive(speed, turn);
-	}
-	
-	 public void driveWithJoystick(Joystick joystick) {
-			double turn = joystick.getZ()*.75;
-			SmartDashboard.putNumber("turn", turn);
-				double move = joystick.getY()*.80;
-				 SmartDashboard.putNumber("move", move);
-				drive(move, turn + 0.0);
-		 }
-	 
-	 public void driveWithJoystickInverse(Joystick joystick) {
-			double turn = joystick.getZ()* .75;
-				double move = joystick.getY()*.80;
-				drive(-move, -turn);
-		}
-	 
-	 public void initDefaultCommand() {
-			// Set the default command for a subsystem here.
-			//setDefaultCommand(new DriveWithJoystick()); 
-		
-		}
-	 
-	 public void Halt() {
-			left.set(0);
-			right.set(0);
-		}
-	 
-	 public boolean isLimitSwitchPressed()
-		{
-			return !limitSwitch.get();
-		}
 
+			leftMotor = new WPI_TalonSRX(L);
+			rightMotor = new WPI_TalonSRX(R);
+
+			// Make an actual object for speed controller
+	
+
+		}
+		drive = new DifferentialDrive(leftMotor, rightMotor);
+		drive.setSafetyEnabled(false);
+
+	}
+
+	public void drive(double speed, double turn) {
+		drive.arcadeDrive(speed, turn, false);
+	}
+
+	public void driveWithJoystick(Joystick joystick) {
+		double turn = joystick.getZ() * .75;
+		SmartDashboard.putNumber("turn", turn);
+		double move = joystick.getY() * .80;
+		SmartDashboard.putNumber("move", move);
+		drive(move, turn);
+	}
+
+	public void driveWithJoystickInverse(Joystick joystick) {
+		double turn = joystick.getZ() * .75;
+		double move = joystick.getY() * .80;
+		drive(-move, -turn);
+	}
+
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new DriveWithJoystick());
+
+	}
+
+	public void Halt() {
+		leftMotor.set(0);
+		rightMotor.set(0);
+	}
+
+	
 
 }
