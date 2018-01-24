@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class Robot extends IterativeRobot{
-	public static OI oi;
+	
 	
 //	WPI_TalonSRX _frontLeftMotor = new WPI_TalonSRX(6); 		/* device IDs here (1 of 2) */
 //	WPI_TalonSRX _frontRightMotor = new WPI_TalonSRX(3);
@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot{
 	
 	@Override
 	public void robotInit(){
-		oi = new OI();
+		
 		CommandBase.init();
 		//drive.setSafetyEnabled(false);
 	}
@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot{
 	
 	@Override
 	public void autonomousPeriodic(){
-		
+		Scheduler.getInstance().run();
 	}
 	
 	@Override

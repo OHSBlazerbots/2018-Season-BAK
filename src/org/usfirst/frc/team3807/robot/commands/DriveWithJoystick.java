@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class DriveWithJoystick extends CommandBase {
 
-	private final JoystickButton inverse = new JoystickButton(OI.getJoystick(),1);
+	
 	//private AnalogPotentiometer pot = new AnalogPotentiometer(1);
 	
     public DriveWithJoystick() {

@@ -2,6 +2,7 @@ package org.usfirst.frc.team3807.robot.subsystems;
 
 //import org.usfirst.frc.team3807.robot.commands.DriveWithJoystick;
 
+import org.usfirst.frc.team3807.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team3807.robot.controllers.TalonSpeedController;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -45,7 +46,7 @@ public class Chassis extends Subsystem {
 	}
 
 	public void drive(double speed, double turn) {
-		drive.arcadeDrive(speed, turn, false);
+		drive.arcadeDrive(speed, turn);
 	}
 
 	public void driveWithJoystick(Joystick joystick) {
@@ -64,7 +65,7 @@ public class Chassis extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		// setDefaultCommand(new DriveWithJoystick());
+		 setDefaultCommand(new DriveWithJoystick());
 
 	}
 

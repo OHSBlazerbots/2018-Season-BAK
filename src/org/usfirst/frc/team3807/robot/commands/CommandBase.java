@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public abstract class CommandBase extends Command{
 	public static OI oi;
-	public static Chassis chassis = new Chassis(RobotMap.LEFT, RobotMap.RIGHT);
+	public static Chassis chassis;
 	
 	public static void init(){
-		
+		chassis = new Chassis (RobotMap.LEFT, RobotMap.RIGHT);
 		oi = new OI();
 	}
 	
