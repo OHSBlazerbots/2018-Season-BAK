@@ -3,6 +3,7 @@ package org.usfirst.frc.team3807.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 
+//OI is used to obtain Operator Input.
 public class OI {
 	private static Joystick joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 	private static Joystick coDriver1 = new Joystick(RobotMap.CODRIVER_JOYSTICK_PORT);

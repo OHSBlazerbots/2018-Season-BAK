@@ -2,14 +2,10 @@ package org.usfirst.frc.team3807.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class HaltRobot extends CommandBase {
 
     public HaltRobot() {
-        // Use requires() here to declare subsystem dependencies
-        requires(chassis);
+        requires(chassis); //Used to declare subsystem dependencies
     }
 
     // Called just before this Command runs the first time

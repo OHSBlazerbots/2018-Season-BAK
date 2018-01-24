@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3807.robot;
 
+//RobotMap contains all of the port numbers for the motor controllers, input devices, and anything else that requires a port.
 public class RobotMap {
 	//ID's for the chassis motor controllers
 	public static int RIGHT = 6;

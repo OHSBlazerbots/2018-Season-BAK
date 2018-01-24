@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class Robot extends IterativeRobot{
 
+	//The Joystick and XboxController are for controlling the movement of the robot.
 	private Joystick joystick = new Joystick(RobotMap.JOYSTICK_PORT);
 	private XboxController xbox = new XboxController(RobotMap.XBOX_CONTROLLER);
 
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot{
 	public void robotInit(){
 
 		CommandBase.init();
+		
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("DriveForward", new DriveForward());
 		autoChooser.addDefault("DoNothingAuto",new DoNothingAuto());

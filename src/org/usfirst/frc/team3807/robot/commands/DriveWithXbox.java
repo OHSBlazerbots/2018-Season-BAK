@@ -8,19 +8,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class DriveWithXbox extends CommandBase {
 
-
-	//private AnalogPotentiometer pot = new AnalogPotentiometer(1);
-
     public DriveWithXbox() {
-        // Use requires() here to declare subsystem dependencies
-        requires(chassis);
-
-      //  requires(sensorBase);
+        requires(chassis); //Used to declare subsystem dependencies
     }
 
     // Called just before this Command runs the first time
@@ -29,9 +20,7 @@ public class DriveWithXbox extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
     	chassis.driveWithXbox(OI.getXboxController());
-
     }
 
     // Make this return true when this Command no longer needs to run execute()
