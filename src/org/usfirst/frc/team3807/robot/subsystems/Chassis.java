@@ -20,11 +20,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Chassis extends Subsystem {
 
+	private boolean useXbox = false; //Set to true to enable control with the xbox controller
+	private boolean xboxRightHand = false; //Set to true to change movement controls to the right joystick
+
 	// Talon variables
-	
+
 //	private SpeedController left, right;
 //	private TalonSRX leftTalon, rightTalon;
-	
+
 	WPI_TalonSRX leftMotor;  		/* device IDs here (1 of 2) */
 	WPI_TalonSRX rightMotor;
 
@@ -37,7 +40,7 @@ public class Chassis extends Subsystem {
 			rightMotor = new WPI_TalonSRX(R);
 
 			// Make an actual object for speed controller
-	
+
 
 		}
 		drive = new DifferentialDrive(leftMotor, rightMotor);
@@ -63,10 +66,24 @@ public class Chassis extends Subsystem {
 		drive(-move, -turn);
 	}
 
+	public void driveWithXbox(XboxController controller){
+		if(xboxRightHand){
+			double turn = controller.getX(GenericHID.Hand.kRight) * 0.25;
+			double move = controller.getY(GenericHID.hand.kRight) * 0.25;
+		}else{
+			double turn = controller.getX(GenericHID.Hand.kLeft) * 0.25;
+			double move = controller.getY(GenericHID.Hand.kLeft) * 0.25;
+		}
+		drive(move, turn);
+	}
+
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		 setDefaultCommand(new DriveWithJoystick());
-
+		if(useXbox){
+			setDefaultCommand(new DriveWithXbox());
+		}else{
+			setDefaultCommand(new DriveWithJoystick());
+		}
 	}
 
 	public void Halt() {
@@ -74,6 +91,6 @@ public class Chassis extends Subsystem {
 		rightMotor.set(0);
 	}
 
-	
+
 
 }
