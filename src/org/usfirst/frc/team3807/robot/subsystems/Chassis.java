@@ -3,16 +3,21 @@ package org.usfirst.frc.team3807.robot.subsystems;
 //import org.usfirst.frc.team3807.robot.commands.DriveWithJoystick;
 
 import org.usfirst.frc.team3807.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team3807.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team3807.robot.controllers.TalonSpeedController;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /*
@@ -20,7 +25,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Chassis extends Subsystem {
 
-	private boolean useXbox = false; //Set to true to enable control with the xbox controller
+	
+	
+	private boolean useXbox = true; //Set to true to enable control with the xbox controller
 	private boolean xboxRightHand = false; //Set to true to change movement controls to the right joystick
 
 	// Talon variables
@@ -67,12 +74,14 @@ public class Chassis extends Subsystem {
 	}
 
 	public void driveWithXbox(XboxController controller){
+		double turn;
+		double move;
 		if(xboxRightHand){
-			double turn = controller.getX(GenericHID.Hand.kRight) * 0.25;
-			double move = controller.getY(GenericHID.hand.kRight) * 0.25;
+			 turn = controller.getX(GenericHID.Hand.kRight) * 0.7;
+			 move = controller.getY(GenericHID.Hand.kRight) * 0.7;
 		}else{
-			double turn = controller.getX(GenericHID.Hand.kLeft) * 0.25;
-			double move = controller.getY(GenericHID.Hand.kLeft) * 0.25;
+			 turn = controller.getX(GenericHID.Hand.kLeft) * 0.7;
+			 move = controller.getY(GenericHID.Hand.kLeft) * 0.7;
 		}
 		drive(move, turn);
 	}

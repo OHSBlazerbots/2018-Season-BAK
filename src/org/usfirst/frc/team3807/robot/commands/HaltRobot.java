@@ -1,37 +1,24 @@
-
 package org.usfirst.frc.team3807.robot.commands;
 
-import org.usfirst.frc.team3807.robot.OI;
-
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DriveWithXbox extends CommandBase {
+public class HaltRobot extends CommandBase {
 
-
-	//private AnalogPotentiometer pot = new AnalogPotentiometer(1);
-
-    public DriveWithXbox() {
+    public HaltRobot() {
         // Use requires() here to declare subsystem dependencies
         requires(chassis);
-
-      //  requires(sensorBase);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	chassis.drive(0,0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
-    	chassis.driveWithXbox(OI.getXboxController());
-
     }
 
     // Make this return true when this Command no longer needs to run execute()
