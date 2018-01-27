@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Chassis extends Subsystem {
 	
-	private boolean useXbox = true; //Set to true to enable control with the xbox controller
+	private boolean useXbox = false; //Set to true to enable control with the xbox controller
 	private boolean xboxRightHand = false; //Set to true to change movement controls to the right joystick
 	
 	private double joystickTurnSpeed = 0.75; //Change this to change the speed of the robot in relation to the control devices
