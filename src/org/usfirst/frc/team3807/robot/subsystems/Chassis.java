@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Chassis extends Subsystem {
 	
-	private boolean useXbox = false; //Set to true to enable control with the xbox controller
+	private boolean useXbox = true; //Set to true to enable control with the xbox controller
 	private boolean xboxRightHand = false; //Set to true to change movement controls to the right joystick
 	
 	private double joystickTurnSpeed = 0.75; //Change this to change the speed of the robot in relation to the control devices
@@ -85,16 +85,26 @@ public class Chassis extends Subsystem {
 		//Get the input
 		double turn;
 		double move;
+		
+		//Forward, Reverse, left joystick. Right, Left, right joystick. 
 		//Determine if we are using the left side or the right side of the controller.
-		if(xboxRightHand){
+		/* ######### COMMENTED OUT TO TEST ALL-ONE CODE
+		  if(xboxRightHand){
+		 
 			 turn = controller.getX(GenericHID.Hand.kRight) * xboxTurnSpeed;
 			 move = controller.getY(GenericHID.Hand.kRight) * xboxMoveSpeed;
 		}else{
 			 turn = controller.getX(GenericHID.Hand.kRight) * xboxTurnSpeed;
 			 move = controller.getY(GenericHID.Hand.kLeft) * xboxMoveSpeed;
 		}
+		*/
+		//Forward, Reverse, Left, Right, right joystick.
+		turn = controller.getX(GenericHID.Hand.kRight) * xboxTurnSpeed;
+		move = controller.getY(GenericHID.Hand.kRight) * xboxMoveSpeed;
+		
 		drive(move, turn);
 	}
+
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
