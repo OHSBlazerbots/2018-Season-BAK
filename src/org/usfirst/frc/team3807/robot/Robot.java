@@ -7,6 +7,8 @@ import org.usfirst.frc.team3807.robot.controllers.TalonSpeedController;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
@@ -25,6 +27,7 @@ public class Robot extends IterativeRobot{
 
 	Command autonomousCommand;
 	SendableChooser autoChooser;
+	//SendableChooser controlChooser;
 	
 	@Override
 	public void robotInit(){
@@ -36,6 +39,16 @@ public class Robot extends IterativeRobot{
 		autoChooser.addDefault("DoNothingAuto",new DoNothingAuto());
 		
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
+		
+		//controlChooser = new SendableChooser();
+		//controlChooser.addDefault("", null);
+		
+		new Thread(() -> {
+			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam0",0);
+            camera.setResolution(320, 240);
+            camera.setFPS(11);
+        }).start();
+		
 	}
 
 	@Override

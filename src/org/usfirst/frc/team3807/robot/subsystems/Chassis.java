@@ -33,10 +33,6 @@ public class Chassis extends Subsystem {
 	private double xboxTurnSpeed = 0.7; //Change this to change the speed of the robot in relation to the control devices
 	private double xboxMoveSpeed = 0.7; //Change this to change the speed of the robot in relation to the control devices
 
-	// Talon variables
-    // private SpeedController left, right;
-    // private TalonSRX leftTalon, rightTalon;
-
 	WPI_TalonSRX leftMotor;  		/* device IDs here (1 of 2) */
 	WPI_TalonSRX rightMotor;
 
@@ -94,7 +90,7 @@ public class Chassis extends Subsystem {
 			 turn = controller.getX(GenericHID.Hand.kRight) * xboxTurnSpeed;
 			 move = controller.getY(GenericHID.Hand.kRight) * xboxMoveSpeed;
 		}else{
-			 turn = controller.getX(GenericHID.Hand.kLeft) * xboxTurnSpeed;
+			 turn = controller.getX(GenericHID.Hand.kRight) * xboxTurnSpeed;
 			 move = controller.getY(GenericHID.Hand.kLeft) * xboxMoveSpeed;
 		}
 		drive(move, turn);
