@@ -2,24 +2,17 @@ package org.usfirst.frc.team3807.robot.subsystems.scissorlift;
 
 import org.usfirst.frc.team3807.robot.commands.CommandBase;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 public class ExtendScissorlift extends CommandBase {
 
-	double scissorliftSpeed;
+	double scissorliftSpeed;	
 	
-	WPI_TalonSRX scissorLiftMot1;
-	WPI_TalonSRX scissorLiftMot2;
-	
-	
-	public RunScissorlift(double spd) {
+	public ExtendScissorlift(double spd) {
 		scissorliftSpeed = spd;
-		requires(Scissorlift);
+		requires(scissorLift);
 	}
 	
 	public void initialize() {
-		scissorLiftMot1.extendLift(scissorliftSpeed);
-		scissorLiftMot2.extendLift(scissorliftSpeed)
+		scissorLift.extendScissorLift(scissorliftSpeed);
 	}
 	
 	public void excecute() {

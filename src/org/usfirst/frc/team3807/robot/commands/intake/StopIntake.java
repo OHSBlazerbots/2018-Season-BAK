@@ -2,18 +2,15 @@ package org.usfirst.frc.team3807.robot.commands.intake;
 
 import org.usfirst.frc.team3807.robot.commands.CommandBase;
 
-public class RunIntake extends CommandBase {
-	double speed;
+public class StopIntake extends CommandBase {
 
-	public RunIntake(double spd1) {
-
-		speed = spd1;
+	public StopIntake() {
 		requires(wheelIntake);
 
 	}
 
 	protected void initialize() {
-		wheelIntake.RunWheelIntake(speed);
+		wheelIntake.StopWheelIntake();
 	}
 
 	protected void execute() {

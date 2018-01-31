@@ -2,18 +2,17 @@ package org.usfirst.frc.team3807.robot.subsystems.scissorlift;
 
 import org.usfirst.frc.team3807.robot.commands.CommandBase;
 
-public class ReduceScissorlift extends CommandBase {
+public class StopScissorlift extends CommandBase {
 
 	double scissorliftSpeed;
 	
 	
-	public ReduceScissorlift(double spd) {
-		scissorliftSpeed = spd;
+	public StopScissorlift() {
 		requires(scissorLift);
 	}
 	
 	public void initialize() {
-		scissorLift.reduceScissorLift(scissorliftSpeed);
+		scissorLift.stopScissorLift();
 	}
 	
 	public void excecute() {
